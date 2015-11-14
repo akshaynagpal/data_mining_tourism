@@ -105,5 +105,12 @@ with open('TWEETS.csv','rb') as csvfile:
         for row in linereader:
                 test_tweets.append(row)
 
+result_tweets = []
 for tweet in test_tweets:
         print tweet, classifier.classify(extract_features(tweet[0].split()))
+        result_tweets.append((tweet, classifier.classify(extract_features(tweet[0].split()))))
+
+with open('sentiment_results.csv','wb') as csvfile:
+	csvwriter = csv.writer(csvfile)
+	for (tweet,sentiment) in result_tweets:
+		csvwriter.writerow([tweet,sentiment])
