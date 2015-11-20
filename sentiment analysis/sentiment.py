@@ -87,6 +87,7 @@ def get_word_features(wordlist):
 
 word_features = get_word_features(get_words_in_tweets(tweets))
 
+
 def extract_features(document):
 	document_words = set(document)
 	features = {}
